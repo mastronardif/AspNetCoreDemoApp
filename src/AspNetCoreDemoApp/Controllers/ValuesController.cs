@@ -20,11 +20,11 @@ namespace AspNetCoreDemoApp.Controllers
 		[HttpGet]
 		public IEnumerable<string> Get()
 		{
-			Console.WriteLine($"XXXXXXXXXXXXXXXX   {conf["name"]}");
+			Console.WriteLine($"XXXXXXXXXXXXXXX   {conf["name"]}");
 
 		    Console.WriteLine(Request.GetDisplayUrl());
 		    Console.WriteLine(Request.GetEncodedUrl());			
-			return new[] { $"{conf["name"]} value1 2:29 PM 4/23/19", "value2 UK buddy" };
+			return new[] { $"{conf["name"]} value1 3:00 PM 4/23/19", "value2 UK buddy" };
 		}
 
 		// GET api/values/5

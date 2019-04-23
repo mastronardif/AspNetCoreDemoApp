@@ -13,6 +13,8 @@ namespace AspNetCoreDemoApp
 
         public Startup(IHostingEnvironment env)
         {
+            Console.WriteLine($"env= {env}");
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true )
