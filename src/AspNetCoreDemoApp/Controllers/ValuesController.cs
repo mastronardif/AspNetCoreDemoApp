@@ -15,7 +15,7 @@ namespace AspNetCoreDemoApp.Controllers
 		    Console.WriteLine(Request.GetDisplayUrl());
 		    Console.WriteLine(Request.GetEncodedUrl());
 
-			return new[] { "value1 Holly S", "value2 FU buddy" };
+			return new[] { "value1 8:37PM 4/22/19Holly S", "value2 FU buddy" };
 		}
 
 		// GET api/values/5
