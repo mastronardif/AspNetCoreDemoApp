@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreDemoApp.Controllers
 {
@@ -10,10 +11,12 @@ namespace AspNetCoreDemoApp.Controllers
 	public class ValuesController : ControllerBase
 	{
 		IConfiguration conf;
+		private readonly ILogger _logger;
 
-		public ValuesController(IConfiguration configuration)
+		public ValuesController(IConfiguration configuration, ILogger<ValuesController> logger)
     	{
         	this.conf = configuration;
+			_logger = logger;
     	}
 
 		// GET: api/values
@@ -21,6 +24,8 @@ namespace AspNetCoreDemoApp.Controllers
 		public IEnumerable<string> Get()
 		{
 			Console.WriteLine($"XXXXXXXXXXXXXXX   {conf["name"]}");
+			_logger.LogWarning("GetById({ID}) NOT FOUND", 123);
+       
 
 		    Console.WriteLine(Request.GetDisplayUrl());
 		    Console.WriteLine(Request.GetEncodedUrl());			

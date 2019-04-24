@@ -4,15 +4,18 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreDemoApp
 {
     public class Startup
     {
         public IConfiguration Configuration { get; set; }
+        private readonly ILogger _logger;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, ILogger<Startup> logger)
         {
+            _logger = logger;
             Console.WriteLine($"env= {env}");
 
             var builder = new ConfigurationBuilder()
@@ -20,6 +23,8 @@ namespace AspNetCoreDemoApp
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true )
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables()
+
+
                 .Build();
         }
     
@@ -29,6 +34,8 @@ namespace AspNetCoreDemoApp
                 .AddMvcCore()
                 .AddCors()
                 .AddJsonFormatters();
+
+            _logger.LogInformation("Added ZZZZZZZZZZZZZZ to services");
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -51,6 +58,11 @@ namespace AspNetCoreDemoApp
                     .AddRedirectToHttpsPermanent();
 
                 app.UseRewriter(options);
+            }
+            if (env.IsDevelopment())
+            {
+                Console.WriteLine("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+                _logger.LogInformation("In Development environment");
             }
         }
     }
