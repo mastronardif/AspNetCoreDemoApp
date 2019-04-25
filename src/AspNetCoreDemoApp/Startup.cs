@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Events;
 
 
 namespace AspNetCoreDemoApp
@@ -11,6 +14,8 @@ namespace AspNetCoreDemoApp
     public class Startup
     {
         public IConfiguration Configuration { get; set; }
+        //public Serilog.Core.Logger Log { get; set; }
+        public Serilog.Core.Logger Log { get; set; }
         //private readonly ILogger _logger;
         //private Serilog.Core.Logger Log { get; set; }
         // public Startup(IHostingEnvironment env, ILogger<Startup> logger)
@@ -30,8 +35,8 @@ namespace AspNetCoreDemoApp
 
         public Startup(IConfiguration configuration)
         {
-             // Init Serilog configuration
-            //Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
+            // Init Serilog configuration
+            //Log = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
             Configuration = configuration;
         }
 
@@ -46,8 +51,11 @@ namespace AspNetCoreDemoApp
             //_logger.LogInformation("Added ZZZZZZZZZZZZZZ to services");
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // logging
+            //loggerFactory.AddSerilog();
+
             if (env.IsProduction())
             {
                 Console.WriteLine("https");
