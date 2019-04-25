@@ -34,6 +34,9 @@ namespace AspNetCoreDemoApp.Controllers
 		{
 			//Console.WriteLine($"get  Log = {Log}");
 			this._logger.LogInformation("Index was called XXXXXXXXXXXXXXXXXXXXXX");
+            _logger.LogWarning("IIIIIIIIIIIII Controller LogWarning");
+            _logger.LogDebug("IIIIIIIIIIIII Controller   LogDebug");
+            _logger.LogError("IIIIIIIIIIIII Controller   LogError");
 			
 			Console.WriteLine($"XXXXXXXXXXXXXXX   {conf["name"]}");
 			//_logger.LogInformation("GetById({ID}) NOT FOUND", 123);			
