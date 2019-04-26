@@ -43,7 +43,7 @@ namespace AspNetCoreDemoApp.Controllers
 
 		    Console.WriteLine(Request.GetDisplayUrl());
 		    Console.WriteLine(Request.GetEncodedUrl());			
-			return new[] { $"{conf["name"]} value1 9:59 PM 4/25/19", "value2 UK buddy" };
+			return new[] { $"{conf["name"]} value1 3:16 PM 4/26/19", "value2 logging buddy" };
 		}
 
 		// GET api/values/5
