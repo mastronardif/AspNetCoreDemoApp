@@ -40,7 +40,7 @@ namespace AspNetCoreDemoApp
             Configuration = configuration;
         }
 
-    
+
         public void ConfigureServices(IServiceCollection services)
         {
             services
@@ -56,6 +56,17 @@ namespace AspNetCoreDemoApp
             // logging
             //loggerFactory.AddSerilog();
 
+            app
+                .UseDefaultFiles()
+                .UseStaticFiles()
+                .UseCors(builder =>
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+            )
+            .UseMvcWithDefaultRoute();
+
             if (env.IsProduction())
             {
                 Console.WriteLine("https");
@@ -70,17 +81,6 @@ namespace AspNetCoreDemoApp
                 Console.WriteLine("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
                 //_logger.LogInformation("In Development environment");
             }
-         
-            app
-                .UseDefaultFiles()
-                .UseStaticFiles()
-                .UseCors(builder =>
-                    builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials()
-                )
-                .UseMvcWithDefaultRoute();
         }
     }
 }
