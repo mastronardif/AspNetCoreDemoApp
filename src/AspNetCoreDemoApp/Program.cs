@@ -14,19 +14,21 @@ namespace AspNetCoreDemoApp
 {
     public class Program
     {
-        public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
-            .AddEnvironmentVariables()
-            .Build();
+        // public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+        //     .SetBasePath(Directory.GetCurrentDirectory())
+        //     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        //     .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "production"}.json", optional: true)
+        //     .AddEnvironmentVariables()
+        //     .Build();
 
         static int nsecs = 1000;
         public static int Main(string[] args)
         {
             var configuration = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.development.json")
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    //.AddJsonFile("appsettings.development.json")
+                    .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "production"}.json", optional: true)
                     .Build();
 
             Log.Logger = new LoggerConfiguration()
@@ -34,6 +36,7 @@ namespace AspNetCoreDemoApp
                 .Enrich.FromLogContext()
                 .CreateLogger();
 
+            Console.WriteLine($"Name: {configuration["Name"]}");
             Log.Verbose("VVVVVVVV Verbose AspNet.Core");
 
             Console.WriteLine($"'waiting {nsecs} milli secs."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking
