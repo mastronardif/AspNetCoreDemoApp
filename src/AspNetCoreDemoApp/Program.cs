@@ -75,7 +75,7 @@ namespace AspNetCoreDemoApp
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>();
-            //.UseSerilog(); // <-- Add this line
+            .UseStartup<Startup>()
+            .UseSerilog(); // <-- Add this line
     }
 }
