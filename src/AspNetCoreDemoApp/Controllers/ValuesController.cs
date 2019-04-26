@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Abstractions;
-
 using Microsoft.Extensions.Logging;
-//using Serilog;
 using System.Threading.Tasks;
 
 namespace AspNetCoreDemoApp.Controllers
@@ -34,9 +30,9 @@ namespace AspNetCoreDemoApp.Controllers
 		{
 			//Console.WriteLine($"get  Log = {Log}");
 			this._logger.LogInformation("Index was called XXXXXXXXXXXXXXXXXXXXXX");
-            _logger.LogWarning("IIIIIIIIIIIII Controller LogWarning");
-            _logger.LogDebug("IIIIIIIIIIIII Controller   LogDebug");
-            _logger.LogError("IIIIIIIIIIIII Controller   LogError");
+            _logger.LogWarning("XXXXXXXXXXX Controller LogWarning");
+            _logger.LogDebug("XXXXXXXXXXXXXX Controller   LogDebug");
+            _logger.LogError("XXXXXXXXXXX Controller   LogError");
 			
 			Console.WriteLine($"XXXXXXXXXXXXXXX   {conf["name"]}");
 			//_logger.LogInformation("GetById({ID}) NOT FOUND", 123);			
@@ -47,7 +43,7 @@ namespace AspNetCoreDemoApp.Controllers
 
 		    Console.WriteLine(Request.GetDisplayUrl());
 		    Console.WriteLine(Request.GetEncodedUrl());			
-			return new[] { $"{conf["name"]} value1 3:00 PM 4/23/19", "value2 UK buddy" };
+			return new[] { $"{conf["name"]} value1 9:59 PM 4/25/19", "value2 UK buddy" };
 		}
 
 		// GET api/values/5
