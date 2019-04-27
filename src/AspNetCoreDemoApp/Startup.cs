@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using AspNetCoreDemoApp.Services.Mail;
 
 
 namespace AspNetCoreDemoApp
@@ -28,6 +29,15 @@ namespace AspNetCoreDemoApp
                 .AddCors()
                 .AddJsonFormatters();
             //_logger.LogInformation("Added ZZZZZZZZZZZZZZ to services");
+
+            if ((Configuration["MailService"] != null) && string.Compare(Configuration["MailService"].ToUpper(), "CLOUD") == 0)
+            {
+                services.AddTransient<IMailService, CloudMailService>();
+            }
+            else
+            {
+                services.AddTransient<IMailService, LocalMailService>();
+            }            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using AspNetCoreDemoApp.Services.Mail;
 
 namespace AspNetCoreDemoApp.Controllers
 {
@@ -13,11 +14,13 @@ namespace AspNetCoreDemoApp.Controllers
 	{
 		IConfiguration conf;
 		readonly ILogger  _logger;
+		private IMailService _mailService;
 
-		public ValuesController(IConfiguration configuration, ILogger<ValuesController> logger)
+		public ValuesController(IConfiguration configuration, ILogger<ValuesController> logger, IMailService mailService)
     	{
         	this.conf = configuration;
 			_logger = logger;
+			_mailService = mailService;
     	}
 
 		// GET: api/values
@@ -33,8 +36,11 @@ namespace AspNetCoreDemoApp.Controllers
 			Console.WriteLine($"XXXXXXXXXXXXXXX   {conf["name"]}");		
 
 		    Console.WriteLine(Request.GetDisplayUrl());
-		    Console.WriteLine(Request.GetEncodedUrl());			
-			return new[] { $"{conf["name"]} value1 10:48 PM 4/27/19", "value2 logging buddy" };
+		    Console.WriteLine(Request.GetEncodedUrl());	
+
+			// jmail test
+			_mailService.Send("the subject", "the msg");		
+			return new[] { $"{conf["name"]} value1 10:48 PM 4/27/19", "value2 logging(file, mongo, cloud),  todo: IEmail" };
 		}
 
 		// GET api/values/5
