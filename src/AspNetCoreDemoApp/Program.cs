@@ -14,12 +14,6 @@ namespace AspNetCoreDemoApp
 {
     public class Program
     {
-        // public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
-        //     .SetBasePath(Directory.GetCurrentDirectory())
-        //     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-        //     .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "production"}.json", optional: true)
-        //     .AddEnvironmentVariables()
-        //     .Build();
 
         static int nsecs = 1000;
         public static int Main(string[] args)
@@ -71,7 +65,6 @@ namespace AspNetCoreDemoApp
                 //Log.CloseAndFlush();
             }
         }
-
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)

@@ -14,32 +14,12 @@ namespace AspNetCoreDemoApp
     public class Startup
     {
         public IConfiguration Configuration { get; set; }
-        //public Serilog.Core.Logger Log { get; set; }
-        public Serilog.Core.Logger Log { get; set; }
-        //private readonly ILogger _logger;
-        //private Serilog.Core.Logger Log { get; set; }
-        // public Startup(IHostingEnvironment env, ILogger<Startup> logger)
-        // {
-        //     _logger = logger;
-        //     Console.WriteLine($"env= {env}");
 
-        //     var builder = new ConfigurationBuilder()
-        //         .SetBasePath(env.ContentRootPath)
-        //         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true )
-        //         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-        //         .AddEnvironmentVariables()
-
-
-        //         .Build();
-        // }
 
         public Startup(IConfiguration configuration)
         {
-            // Init Serilog configuration
-            //Log = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
             Configuration = configuration;
         }
-
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -47,15 +27,11 @@ namespace AspNetCoreDemoApp
                 .AddMvcCore()
                 .AddCors()
                 .AddJsonFormatters();
-
             //_logger.LogInformation("Added ZZZZZZZZZZZZZZ to services");
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            // logging
-            //loggerFactory.AddSerilog();
-
             app
                 .UseDefaultFiles()
                 .UseStaticFiles()

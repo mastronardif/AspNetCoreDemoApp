@@ -13,15 +13,11 @@ namespace AspNetCoreDemoApp.Controllers
 	{
 		IConfiguration conf;
 		readonly ILogger  _logger;
-		 
-		//readonly ILogger _logger22 = Log.ForContext<ValuesController>();
 
 		public ValuesController(IConfiguration configuration, ILogger<ValuesController> logger)
     	{
         	this.conf = configuration;
 			_logger = logger;
-			
-			//Console.WriteLine($"ctor  _logger = {_logger}");
     	}
 
 		// GET: api/values
@@ -29,21 +25,16 @@ namespace AspNetCoreDemoApp.Controllers
 		public IEnumerable<string> Get()
 		{
 			//Console.WriteLine($"get  Log = {Log}");
-			this._logger.LogInformation("Index was called XXXXXXXXXXXXXXXXXXXXXX");
-            _logger.LogWarning("XXXXXXXXXXX Controller LogWarning");
-            _logger.LogDebug("XXXXXXXXXXXXXX Controller   LogDebug");
-            _logger.LogError("XXXXXXXXXXX Controller   LogError");
+			this._logger.LogInformation("api/values was called XXXXXXXXXXXXXXXXXXXXXX");
+            //_logger.LogWarning("XXXXXXXXXXX Controller LogWarning");
+            //_logger.LogDebug("XXXXXXXXXXXXXX Controller   LogDebug");
+            //_logger.LogError("XXXXXXXXXXX Controller   LogError");
 			
-			Console.WriteLine($"XXXXXXXXXXXXXXX   {conf["name"]}");
-			//_logger.LogInformation("GetById({ID}) NOT FOUND", 123);			
- 			//_logger.LogError("It broke :(");			
-			//_logger.LogDebug( "DDDDDDDD Debug  AspNet.Core");
-			
-       Console.WriteLine($"_logger = {_logger}");
+			Console.WriteLine($"XXXXXXXXXXXXXXX   {conf["name"]}");		
 
 		    Console.WriteLine(Request.GetDisplayUrl());
 		    Console.WriteLine(Request.GetEncodedUrl());			
-			return new[] { $"{conf["name"]} value1 3:16 PM 4/26/19", "value2 logging buddy" };
+			return new[] { $"{conf["name"]} value1 10:48 PM 4/27/19", "value2 logging buddy" };
 		}
 
 		// GET api/values/5
