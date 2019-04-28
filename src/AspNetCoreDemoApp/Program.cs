@@ -15,7 +15,7 @@ namespace AspNetCoreDemoApp
     public class Program
     {
 
-        static int nsecs = 1000;
+        //static int nsecs = 1000;
         public static int Main(string[] args)
         {
             var configuration = new ConfigurationBuilder()
@@ -31,21 +31,21 @@ namespace AspNetCoreDemoApp
                 .CreateLogger();
 
             Console.WriteLine($"Name: {configuration["Name"]}");
-            Log.Verbose("VVVVVVVV Verbose AspNet.Core");
+            //Log.Verbose("VVVVVVVV Verbose AspNet.Core");
 
-            Console.WriteLine($"'waiting {nsecs} milli secs."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking
-            Log.Debug("DDDDDDDD Debug  AspNet.Core");
-            Console.WriteLine($"'waiting {nsecs} milli secs."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking
+            //Console.WriteLine($"'waiting {nsecs} milli secs."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking
+            //Log.Debug("DDDDDDDD Debug  AspNet.Core");
+            //Console.WriteLine($"'waiting {nsecs} milli secs."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking
             Log.Information("IIIIIIII Information  AspNet.Core");
-            Console.WriteLine($"'waiting {nsecs} milli secs."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking                
-            Log.Warning("WWWWWWWW Warning  AspNet.Core");
-            Log.Fatal("FFFFFFFF Fatal terminated unexpectedly  AspNet.Core");
-            Log.Error("EEEEEEEE Error  AspNet.Core");
-            Log.Verbose("VVVVVVVV Error  AspNet.Core");
+            //Console.WriteLine($"'waiting {nsecs} milli secs."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking                
+            //Log.Warning("WWWWWWWW Warning  AspNet.Core");
+            //Log.Fatal("FFFFFFFF Fatal terminated unexpectedly  AspNet.Core");
+            //Log.Error("EEEEEEEE Error  AspNet.Core");
+            //Log.Verbose("VVVVVVVV Error  AspNet.Core");
 
-            Log.Information("Host IIIIIIIIIIII AspNet.Core");
-            nsecs = 6000;
-            Console.WriteLine($"'waiting {nsecs} milli secs. The end is near."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking                
+            //Log.Information("Host IIIIIIIIIIII AspNet.Core");
+            //nsecs = 6000;
+            //Console.WriteLine($"'waiting {nsecs} milli secs. The end is near."); Task.Delay(nsecs).Wait(); // Wait 2 seconds with blocking                
 
             try
             {

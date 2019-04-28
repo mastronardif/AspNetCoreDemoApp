@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using AspNetCoreDemoApp.Services.Mail;
+using AspNetCoreDemoApp.Services.MailBee;
 
 
 namespace AspNetCoreDemoApp
@@ -33,10 +34,12 @@ namespace AspNetCoreDemoApp
             if ((Configuration["MailService"] != null) && string.Compare(Configuration["MailService"].ToUpper(), "CLOUD") == 0)
             {
                 services.AddTransient<IMailService, CloudMailService>();
+                services.AddTransient<IMailBeeService, LocalMailBeeService>();
             }
             else
             {
                 services.AddTransient<IMailService, LocalMailService>();
+                services.AddTransient<IMailBeeService, LocalMailBeeService>();
             }            
         }
 
